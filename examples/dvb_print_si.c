@@ -50,9 +50,10 @@
 #define MAX_PIDS    8192
 #define READ_ONCE   7
 
+// PID: Packet Identifier
 typedef struct ts_pid_t {
     int i_psi_refcount;
-    int8_t i_last_cc;
+    int8_t i_last_cc;  // Last Continuity Counter
 
     /* biTStream PSI section gathering */
     uint8_t *p_psi_buffer;
@@ -1244,8 +1245,13 @@ int main(int i_argc, char **ppsz_argv)
 
         uint16_t i_pid = ts_get_pid(p_ts);
         ts_pid_t *p_pid = &p_pids[i_pid];
-        if (p_pid->i_psi_refcount)
+        if (p_pid->i_psi_refcount) {
             handle_psi_packet(p_ts);
+        }
+        else {
+            // TBD try here:
+            //fprintf(stderr, "Unhandled PID %hu\n", i_pid);
+        }
         p_pid->i_last_cc = ts_get_cc(p_ts);
         b_is_last_invalid = false;
     }
