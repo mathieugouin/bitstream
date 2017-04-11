@@ -1141,7 +1141,7 @@ int main(int i_argc, char **ppsz_argv)
 
     memset(p_pids, 0, sizeof(p_pids));
 
-    for (i = 0; i < 8192; i++) {
+    for (i = 0; i < MAX_PIDS; i++) {
         p_pids[i].i_last_cc = -1;
         psi_assemble_init(&p_pids[i].p_psi_buffer,
                           &p_pids[i].i_psi_buffer_used);
