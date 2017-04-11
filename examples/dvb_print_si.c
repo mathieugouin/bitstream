@@ -114,8 +114,20 @@ enum tables_t {
     TABLE_END
 };
 static const char * const ppsz_all_tables[TABLE_END] = {
-    "pat", "cat", "tsdt", "nit", "bat", "sdt", "eit", "tot", "tdt", "rst",
-    "dit", "sit", "pmt", "scte35"
+    "pat",
+    "cat",
+    "tsdt",
+    "nit",
+    "bat",
+    "sdt",
+    "eit",
+    "tot",
+    "tdt",
+    "rst",
+    "dit",
+    "sit",
+    "pmt",
+    "scte35"
 };
 static bool pb_print_table[TABLE_END];
 
